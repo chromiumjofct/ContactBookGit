@@ -14,6 +14,7 @@ public class Main {
     public static final String SET_EMAIL      = "SE";
     public static final String LIST_CONTACTS  = "LC";
     public static final String GIVE_NUMBER  = "GN";
+    public static final String REPEATED_PHONES  = "EP";
     public static final String QUIT           = "Q";
 
     //Constantes que definem as mensagens para o utilizador
@@ -58,6 +59,9 @@ public class Main {
                 case GIVE_NUMBER:
                     giveNumber(in, cBook);
                     break;
+                case REPEATED_PHONES:
+                    repeatedNumber(cBook);
+                    break;
                 default:
                     System.out.println(COMMAND_ERROR);
             }
@@ -67,6 +71,19 @@ public class Main {
         System.out.println(QUIT_MSG);
         System.out.println();
         in.close();
+    }
+
+    private static void repeatedNumber(ContactBook cBook) {
+        if (cBook.getNumberOfContacts() > 1 ) {
+            if(cBook.verify_equalsn()){
+                System.out.println("There are contacts that share phone numbers.");
+            }
+            else {
+                System.out.println("All contacts have different phone numbers.");
+            }
+        }
+        else System.out.println("All contacts have different phone numbers.");
+
     }
 
     private static void giveNumber(Scanner in, ContactBook cBook) {
