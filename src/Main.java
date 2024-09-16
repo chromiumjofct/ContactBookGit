@@ -25,8 +25,11 @@ public class Main {
     public static final String CONTACT_REMOVED = "contactBook.Contact removed.";
     public static final String CONTACT_UPDATED = "contactBook.Contact updated.";
     public static final String BOOK_EMPTY = "contactBook.Contact book empty.";
+    public static final String NO_CONTACTS = "There are contacts that share phone numbers.";
+    public static final String DIF_CONTACTS = "All contacts have different phone numbers.";
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
+
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -76,13 +79,13 @@ public class Main {
     private static void repeatedNumber(ContactBook cBook) {
         if (cBook.getNumberOfContacts() > 1 ) {
             if(cBook.verify_equalsn()){
-                System.out.println("There are contacts that share phone numbers.");
+                System.out.println(NO_CONTACTS);
             }
             else {
-                System.out.println("All contacts have different phone numbers.");
+                System.out.println(DIF_CONTACTS);
             }
         }
-        else System.out.println("All contacts have different phone numbers.");
+        else System.out.println(DIF_CONTACTS);
 
     }
 
